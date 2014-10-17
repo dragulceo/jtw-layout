@@ -1,0 +1,38 @@
+@import "../bower_components/bootstrap/less/bootstrap.less";
+@import "../bower_components/font-awesome/less/font-awesome.less";
+
+@fa-font-path: "../bower_components/fontawesome/fonts/";
+@fa-css-prefix: icon;
+
+@bg-image: '';
+
+body {
+  padding-top: @navbar-height;
+}
+
+@media (min-width: 768px) {
+  .navbar-form .form-control {
+    margin-bottom: 0;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: @navbar-height;
+    bottom: 0;
+    left: 0;
+    z-index: @zindex-navbar;
+    display: block;
+    padding: @padding-base-vertical @padding-base-horizontal;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+    background-color: @gray-lighter;
+  }
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
