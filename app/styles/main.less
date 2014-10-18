@@ -6,12 +6,20 @@
 
 @bg-image: 'http://lorempixel.com/600/600/';
 
-@sidebar-background-color: rgba(0, 0, 0, 0.3);
+@sidebar-color-background: rgba(0, 0, 0, 0.3);
 @sidebar-color: #FFFFFF;
-@sidebar-font-size: 0.97em;
 @sidebar-spacing: 20px;
-@box-background-color: rgba(255, 255, 255, 0.3);
+@box-color-background: rgba(255, 255, 255, 0.3);
 
+@main-color-background: #FFFFFF;
+@main-color: rgba(90, 90, 90, 1);
+@main-color-satusbar-text: #FFFFFF;
+@main-color-satusbar-background: rgba(200, 200, 200, 0.8);
+@main-color-satusbar-button-background: rgba(215, 215, 215, 0.8);
+@main-color-satusbar-button-text: rgba(115, 115, 115, 1);
+@main-color-recommendation: rgba(123, 191, 157, 1);
+
+@main-box-margin: @grid-gutter-width;
 
 body {
   padding-top: @navbar-height;
@@ -19,9 +27,13 @@ body {
   background-size: 100%;
 }
 
-.box {
-  background-color: @sidebar-background-color;
+.sidebox {
+  background-color: @sidebar-color-background;
   color: @sidebar-color;
+}
+
+.small-font {
+  font-size: @font-size-small;
 }
 
 div.sidebar {
@@ -34,7 +46,7 @@ div.sidebar {
     }
     h4, h5 {
       font-weight: normal;
-      font-size: @sidebar-font-size;
+      .small-font;
     }
   }
 
@@ -50,6 +62,7 @@ div.sidebar {
       border-width: 0 1px 0 0;
     }
     button.btn-default {
+      .small-font;
       background: transparent;
       border: 0 none;
       color: @sidebar-color;
@@ -66,14 +79,15 @@ div.sidebar {
     }
     h4 {
       font-weight: bold;
-      font-size: @sidebar-font-size;
+      .small-font;
       display: inline;
     }
     p {
+      .small-font;
       display: inline;
     }
   }
-  .box;
+  .sidebox;
 }
 
 @media (min-width: @screen-sm-min) {
@@ -92,9 +106,207 @@ div.sidebar {
   }
 }
 
+@timeline-icon-size: 50px;
+
+div.main {
+  & > .row {
+    padding: 15px;
+  }
+  div.status {
+    .btn, input {
+      height: 3.5em;
+      border-radius: 0;
+      border: 0 none;
+      .small-font;
+    }
+    .btn {
+      text-transform: uppercase;
+      background: @main-color-satusbar-button-background;
+      color: @main-color-satusbar-button-text;
+    }
+
+    input {
+      &::-webkit-input-placeholder {
+        color: @main-color-satusbar-text;
+      }
+      &:-moz-placeholder {
+        /* Firefox 18- */
+        color: @main-color-satusbar-text;
+      }
+      &::-moz-placeholder {
+        /* Firefox 19+ */
+        color: @main-color-satusbar-text;
+      }
+      &:-ms-input-placeholder {
+        color: @main-color-satusbar-text;
+      }
+    }
+    input {
+      background: @main-color-satusbar-background;
+    }
+  }
+
+  div.box {
+    background-color: @main-color-background;
+    border-top: 3px solid darken(@main-color-background, 5%);
+    font-size: @font-size-small;
+    margin-bottom: @main-box-margin / 2;
+    margin-top: @main-box-margin / 2;
+    color: @main-color;
+    padding: @padding-small-vertical @padding-small-horizontal;
+    h4 {
+      font-weight: normal;
+    }
+    a.more {;
+      color: @main-color;
+      text-align: right;
+      display: block;
+      font-size: 0.92em;
+      margin-bottom: @main-box-margin / 5;
+    }
+    &.connections {
+      p {
+        color: @main-color-recommendation;
+        overflow: auto;
+      }
+      span.connections {
+        font-size: 7em;
+        line-height: 1em;
+        color: @main-color;
+        float: left;
+        display: block;
+        margin-right: @main-box-margin / 3;
+      }
+      span.recommendations {
+        font-size: 3em;
+        display: inline-block;
+        margin-top: @main-box-margin / 3;
+      }
+      span.icon {
+        font-size: 1.5em;
+        color: @gray-lighter;
+      }
+      ul {
+        overflow: auto;
+        list-style: none;
+        padding: 0;
+        li {
+          margin: @main-box-margin / 7;
+          display: block;
+          float: left;
+        }
+      }
+    }
+    &.summary {
+      div.content {
+      }
+    }
+    &.photo-album {
+      img {
+        visibility: hidden;
+      }
+      color: @main-color-background;
+    }
+    &.events, &.timeline {
+      span.bullet, div.bullet {
+        display: table-cell;
+        vertical-align: middle;
+        padding: @main-box-margin / 3;
+        width: 2.5em;
+      }
+      span.icon {
+        font-size: 1.8em;
+      }
+      h4 {
+        margin-bottom: @main-box-margin / 7;
+      }
+      h5 {
+        font-size: 0.9em;
+        color: lighten(@main-color, 20%);
+        margin-top: 0;
+      }
+      div.list-group {
+        display: table;
+        width: 100%;
+      }
+      a.list-group-item {
+        display: table-row;
+        padding-top: @main-box-margin / 7;
+        padding-bottom: @main-box-margin / 7;
+      }
+      div.content {
+        display: table-cell;
+      }
+
+    }
+
+    &.timeline {
+      margin-top: 1px;
+      a.list-group-item {
+        border: 0 none;
+      }
+      div.bullet, a:first-child div.bullet:after {
+        background:
+          url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAABCAIAAACZnPOkAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goSAw8zbk6TygAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAD0lEQVQI12O8cOECAxIAACJAAnJyqdu8AAAAAElFTkSuQmCC)
+        repeat-y
+        center center;
+      }
+      span.icon {
+        position: relative;
+        z-index: 10;
+      }
+      a:first-child div.bullet {
+        background: none;
+        position: relative;
+      }
+      a:first-child div.bullet:after {
+        content:"";
+        position:absolute;
+        z-index: 0;
+        top:50%;
+        left:0;
+        right:0;
+        bottom:0;
+      }
+
+
+      span.icon {
+        background-color: #666666;
+        display: block;
+        width: @timeline-icon-size;
+        height: @timeline-icon-size;
+        line-height: @timeline-icon-size;
+        padding-left: (@timeline-icon-size - 24px) / 2;
+        color: @main-color-background;
+        border: 2px solid #FFFFFF;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        .img-circle;
+      }
+      span.icon-heart {
+        background-color: #FF0000;
+      }
+      span.icon-pencil {
+        background-color: rgba(112, 202, 158, 1);
+      }
+      span.icon-flag {
+        background-color: rgba(133, 150, 188, 1)
+      }
+      div.content h4 {
+        font-weight: bold;
+        font-size: @font-size-small;
+      }
+      p, h5 {
+        color: lighten(@main-color, 40%);
+      }
+    }
+  }
+
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
 }
+
