@@ -4,29 +4,91 @@
 @fa-font-path: "../bower_components/fontawesome/fonts/";
 @fa-css-prefix: icon;
 
-@bg-image: '';
+@bg-image: 'http://lorempixel.com/600/600/';
+
+@sidebar-background-color: rgba(0, 0, 0, 0.3);
+@sidebar-color: #FFFFFF;
+@sidebar-font-size: 0.97em;
+@sidebar-spacing: 20px;
+@box-background-color: rgba(255, 255, 255, 0.3);
+
 
 body {
   padding-top: @navbar-height;
+  background-image: url(@bg-image);
+  background-size: 100%;
 }
 
-@media (min-width: 768px) {
+.box {
+  background-color: @sidebar-background-color;
+  color: @sidebar-color;
+}
+
+div.sidebar {
+  div.user {
+    padding: @padding-base-vertical @padding-base-horizontal;
+    text-align: center;
+    img {
+      margin-top: @sidebar-spacing;
+      border: 4px solid @sidebar-color;
+    }
+    h4, h5 {
+      font-weight: normal;
+      font-size: @sidebar-font-size;
+    }
+  }
+
+  .menu-border {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  div.menu {
+    padding: 0;
+    margin: @sidebar-spacing 0;
+    div.btn-group:first-child {
+      .menu-border;
+      border-width: 0 1px 0 0;
+    }
+    button.btn-default {
+      background: transparent;
+      border: 0 none;
+      color: @sidebar-color;
+      text-transform: uppercase;
+      white-space: normal;
+      padding: @sidebar-spacing / 2 @sidebar-spacing;
+    }
+    .menu-border;
+    border-width: 1px 0;
+  }
+  div.user-details {
+    div.item {
+      padding: @padding-base-vertical @padding-base-horizontal;
+    }
+    h4 {
+      font-weight: bold;
+      font-size: @sidebar-font-size;
+      display: inline;
+    }
+    p {
+      display: inline;
+    }
+  }
+  .box;
+}
+
+@media (min-width: @screen-sm-min) {
   .navbar-form .form-control {
     margin-bottom: 0;
   }
 
-  .sidebar {
+  div.sidebar {
     position: fixed;
     top: @navbar-height;
     bottom: 0;
     left: 0;
     z-index: @zindex-navbar;
-    display: block;
-    padding: @padding-base-vertical @padding-base-horizontal;
     overflow-x: hidden;
     overflow-y: auto;
-    /* Scrollable contents if viewport is shorter than content. */
-    background-color: @gray-lighter;
   }
 }
 
