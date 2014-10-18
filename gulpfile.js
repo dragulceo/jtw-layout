@@ -2,6 +2,8 @@
 // generated on 2014-10-17 using generator-gulp-webapp 0.1.0
 
 var gulp = require('gulp');
+var uncss = require('gulp-uncss');
+
 
 // load plugins
 var $ = require('gulp-load-plugins')();
@@ -10,6 +12,9 @@ gulp.task('styles', function () {
     return gulp.src('app/styles/main.less')
         .pipe($.less({}))
         .pipe($.autoprefixer('last 1 version'))
+        .pipe(uncss({
+          html: ['app/index.html']
+        }))
         .pipe(gulp.dest('.tmp/styles'))
         .pipe($.size());
 });
