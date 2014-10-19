@@ -271,7 +271,6 @@ div.main {
         position: absolute;
       }
 
-
       span.icon {
         background-color: #666666;
         display: block;
@@ -302,6 +301,7 @@ div.main {
       }
     }
   }
+}
 
 div.boxes {
   div.box {
@@ -315,6 +315,33 @@ div.boxes {
   }
 }
 
+div.two-cols, div.boxes-bk {
+  display: table;
+}
+
+div.col, div.boxes-bk > div {
+  display: table-cell;
+  vertical-align: middle;
+  float: none;
+}
+
+div.boxes-bk > div {
+  div.box {
+    position: relative;
+    height: 260px;
+    &.summary {
+      div.content {
+        height: 180px;
+        overflow: hidden;
+      }
+    }
+    a.more {
+      position: absolute;
+      bottom: 0;
+      right: @main-box-margin / 2;
+    }
+  }
+  vertical-align: top;
 }
 
 .browsehappy {
