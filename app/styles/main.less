@@ -147,6 +147,7 @@ div.main {
   }
 
   div.box {
+    position: relative;
     background-color: @main-color-background;
     border-top: 3px solid darken(@main-color-background, 5%);
     font-size: @font-size-small;
@@ -157,12 +158,14 @@ div.main {
     h4 {
       font-weight: normal;
     }
-    a.more {;
+    a.more {
       color: @main-color;
       text-align: right;
       display: block;
       font-size: 0.92em;
-      margin-bottom: @main-box-margin / 5;
+      position: absolute;
+      right: @main-box-margin / 2;
+      bottom: @main-box-margin / 3;
     }
     &.connections {
       p {
@@ -301,6 +304,18 @@ div.main {
       }
     }
   }
+
+div.boxes {
+  div.box {
+    height: 260px;
+    &.summary {
+      div.content {
+        height: 180px;
+        overflow: hidden;
+      }
+    }
+  }
+}
 
 }
 
