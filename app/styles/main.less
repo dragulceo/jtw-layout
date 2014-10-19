@@ -315,33 +315,14 @@ div.boxes {
   }
 }
 
-div.two-cols, div.boxes-bk {
+div.two-cols {
   display: table;
 }
 
-div.col, div.boxes-bk > div {
+div.col {
   display: table-cell;
   vertical-align: middle;
   float: none;
-}
-
-div.boxes-bk > div {
-  div.box {
-    position: relative;
-    height: 260px;
-    &.summary {
-      div.content {
-        height: 180px;
-        overflow: hidden;
-      }
-    }
-    a.more {
-      position: absolute;
-      bottom: 0;
-      right: @main-box-margin / 2;
-    }
-  }
-  vertical-align: top;
 }
 
 .browsehappy {
